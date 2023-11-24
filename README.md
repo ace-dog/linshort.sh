@@ -1,0 +1,1 @@
+# linshort.sh
