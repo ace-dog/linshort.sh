@@ -4,6 +4,7 @@ alias gicl='git clone'
 alias gip='git push'
 alias gis='git status'
 alias gif='git fetch'
+alias giad='git add .'
 function gicc() { # git conventional commit
     echo "Select Type: "
     echo "1  => feat     Commits, that adds or remove a new feature"

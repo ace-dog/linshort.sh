@@ -11,10 +11,11 @@ A linux terminal git and ssh helper utility
 > | short     |    comamnd    |
 > |:---------:|:-------------:|
 > |   `gilog` | git log --oneline --graph
-> |   `gicl`  | git clone`
-> |   `gip`   | git push`
-> |   `gis`   | git status`
-> |   `gif`   | git fetch`
+> |   `gicl`  | git clone
+> |   `gip`   | git push
+> |   `gis`   | git status
+> |   `gif`   | git fetch
+> |   `giad`  | git add .
 > |   `gicc`  | git commit -m "$Type[$Scope:$Ticket] $message
 
 ## SSH Commands
