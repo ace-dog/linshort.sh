@@ -1,9 +1,10 @@
-alias gitlog='git log --oneline --graph'
-alias gitcl='git clone'
-alias gitp='git push'
-alias gits='git status'
-alias gitf='git fetch'
-function gitcc() { # git conventional commit
+
+alias gilog='git log --oneline --graph'
+alias gicl='git clone'
+alias gip='git push'
+alias gis='git status'
+alias gif='git fetch'
+function gicc() { # git conventional commit
     echo "Select Type: "
     echo "1  => feat     Commits, that adds or remove a new feature"
     echo "2  => fix      Commits, that fixes a bug"
