@@ -10,13 +10,14 @@ A linux terminal git and ssh helper utility
 ## GIT Commands
 > | short     |    comamnd    |
 > |:---------:|:-------------:|
-> |   `gilog` | git log --oneline --graph
-> |   `gicl`  | git clone
-> |   `gip`   | git push
-> |   `gis`   | git status
-> |   `gif`   | git fetch
-> |   `giad`  | git add .
-> |   `gicc`  | git commit -m "$Type[$Scope:$Ticket] $message
+> |   `gitlog` | git log --oneline --graph
+> |   `gitcl`  | git clone
+> |   `gitp`   | git push
+> |   `gits`   | git status
+> |   `gitf`   | git fetch
+> |   `gitad`  | git add .
+> |   `gitcc`  | git commit -m "$Type[$Scope:$Ticket] $message
+> |   `gituc`  | git commit -m "$Type[$Scope:$Ticket] $message; terminal UI
 
 ## SSH Commands
 > | short     |    comamnd    |

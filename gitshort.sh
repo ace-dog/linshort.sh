@@ -1,11 +1,11 @@
 
-alias gilog='git log --oneline --graph'
-alias gicl='git clone'
-alias gip='git push'
-alias gis='git status'
-alias gif='git fetch'
-alias giad='git add .'
-function gicc() { # git conventional commit
+alias gitlog='git log --oneline --graph'
+alias gitcl='git clone'
+alias gitp='git push'
+alias gits='git status'
+alias gitf='git fetch'
+alias gitad='git add .'
+function gitcc() { # git conventional commit
     echo "Select Type: "
     echo "1  => feat     Commits, that adds or remove a new feature"
     echo "2  => fix      Commits, that fixes a bug"
@@ -79,4 +79,36 @@ function gicc() { # git conventional commit
     else
         echo "Not Commit"
     fi
+}
+function gituc() { # git conventional commit TUI
+commit_type=$(whiptail --title "Conventional Commit" --menu "Commit Type" 0 0 0 \
+"feat"     "Commits, that adds or remove a new feature" \
+"fix"      "Commits, that fixes a bug" \
+"build"    "Commits, that affect build components like build tool, ci pipeline, dependencies, project version, ..." \
+"chore"    "Miscellaneous commits e.g. modifying .gitignore" \
+"docs"     "Commits, that affect documentation only" \
+"refactor" "Commits, that rewrite/restructure your code, however does not change any API behaviour" \
+"perf"     "Commits are special refactor commits, that improve performance" \
+"style"    "Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)" \
+"test"     "Commits, that add missing tests or correcting existing tests" \
+"ops"      "Commits, that affect operational components like infrastructure, deployment, backup, recovery, ..." 3>&1 1>&2 2>&3)
+if [[ $commit_type == "" ]]; then
+    exit
+fi
+commit_scope=$(whiptail --title "Conventional Commit" --inputbox "Commit Scope" 0 0  3>&1 1>&2 2>&3)
+commit_ticket=$(whiptail --title "Conventional Commit" --inputbox "Commit Ticket" 0 0  3>&1 1>&2 2>&3)
+commit_description=$(whiptail --title "Conventional Commit" --inputbox "Commit Description" 0 0  3>&1 1>&2 2>&3)
+commit_body=$(whiptail --title "Conventional Commit" --inputbox "Commit Body" 0 0  3>&1 1>&2 2>&3)
+CommitMessage=
+if [[ $commit_scope == "" || $commit_ticket == "" ]]; then
+    CommitMessage="$commit_type[$commit_scope$commit_ticket] $commit_description"
+else
+    CommitMessage="$commit_type[$commit_scope:$commit_ticket] $commit_description"
+fi 
+if whiptail --title "Commit message " --yesno "$CommitMessage" 0 0; then
+    git commit -v -m "$CommitMessage"
+    echo "Commit Done"
+else
+    echo "Not Commit"
+fi
 }
