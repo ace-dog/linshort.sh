@@ -27,4 +27,5 @@ A linux terminal git and ssh helper utility
 > |   `sshcnt`  | get number of connections
 > |   `sshlst`  | list connections
 > |   `sshcon`  | connecto to connection from list, input is source number
+> |   `linssh`  | Terminal UI connection managment
 
