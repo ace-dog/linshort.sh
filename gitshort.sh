@@ -92,23 +92,22 @@ commit_type=$(whiptail --title "Conventional Commit" --menu "Commit Type" 0 0 0 
 "style"    "Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)" \
 "test"     "Commits, that add missing tests or correcting existing tests" \
 "ops"      "Commits, that affect operational components like infrastructure, deployment, backup, recovery, ..." 3>&1 1>&2 2>&3)
-if [[ $commit_type == "" ]]; then
-    exit
-fi
-commit_scope=$(whiptail --title "Conventional Commit" --inputbox "Commit Scope" 0 0  3>&1 1>&2 2>&3)
-commit_ticket=$(whiptail --title "Conventional Commit" --inputbox "Commit Ticket" 0 0  3>&1 1>&2 2>&3)
-commit_description=$(whiptail --title "Conventional Commit" --inputbox "Commit Description" 0 0  3>&1 1>&2 2>&3)
-commit_body=$(whiptail --title "Conventional Commit" --inputbox "Commit Body" 0 0  3>&1 1>&2 2>&3)
-CommitMessage=
-if [[ $commit_scope == "" || $commit_ticket == "" ]]; then
-    CommitMessage="$commit_type[$commit_scope$commit_ticket] $commit_description"
-else
-    CommitMessage="$commit_type[$commit_scope:$commit_ticket] $commit_description"
-fi 
-if whiptail --title "Commit message " --yesno "$CommitMessage" 0 0; then
-    git commit -v -m "$CommitMessage"
-    echo "Commit Done"
-else
-    echo "Not Commit"
+if [[ $commit_type != "" ]]; then
+    commit_scope=$(whiptail --title "Conventional Commit" --inputbox "Commit Scope" 0 0  3>&1 1>&2 2>&3)
+    commit_ticket=$(whiptail --title "Conventional Commit" --inputbox "Commit Ticket" 0 0  3>&1 1>&2 2>&3)
+    commit_description=$(whiptail --title "Conventional Commit" --inputbox "Commit Description" 0 0  3>&1 1>&2 2>&3)
+    commit_body=$(whiptail --title "Conventional Commit" --inputbox "Commit Body" 0 0  3>&1 1>&2 2>&3)
+    CommitMessage=
+    if [[ $commit_scope == "" || $commit_ticket == "" ]]; then
+        CommitMessage="$commit_type[$commit_scope$commit_ticket] $commit_description"
+    else
+        CommitMessage="$commit_type[$commit_scope:$commit_ticket] $commit_description"
+    fi 
+    if whiptail --title "Commit message " --yesno "$CommitMessage" 0 0; then
+        git commit -v -m "$CommitMessage"
+        echo "Commit Done"
+    else
+        echo "Not Commit"
+    fi
 fi
 }
