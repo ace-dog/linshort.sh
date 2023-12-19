@@ -17,7 +17,8 @@ function gitcc() { # git conventional commit
     echo "7  => perf     Commits are special refactor commits, that improve performance"
     echo "8  => style    Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)"
     echo "9  => test     Commits, that add missing tests or correcting existing tests"
-    echo "10 => ops      Commits, that affect operational components like infrastructure, deployment, backup, recovery, ..."
+    echo "10 => wip      Commits, work in progress"
+    echo "11 => ops      Commits, that affect operational components like infrastructure, deployment, backup, recovery, ..."
     echo "or write custom Type"
     read commit_type
     if [[ $commit_type =~ ^[0-9]+$ ]]; then
@@ -50,6 +51,9 @@ function gitcc() { # git conventional commit
                 commit_type="test"
                 ;;
             10)
+                commit_type="wip"
+                ;;
+            11)
                 commit_type="ops"
                 ;;
             *)
@@ -92,6 +96,7 @@ commit_type=$(whiptail --title "Conventional Commit" --menu "Commit Type" 0 0 0 
 "perf"     "Commits are special refactor commits, that improve performance" \
 "style"    "Commits, that do not affect the meaning (white-space, formatting, missing semi-colons, etc)" \
 "test"     "Commits, that add missing tests or correcting existing tests" \
+"wip"      "Commits, work in progress" \
 "ops"      "Commits, that affect operational components like infrastructure, deployment, backup, recovery, ..." 3>&1 1>&2 2>&3)
 if [[ $commit_type != "" ]]; then
     commit_scope=$(whiptail --title "Conventional Commit" --inputbox "Commit Scope" 0 0  3>&1 1>&2 2>&3)
