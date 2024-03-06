@@ -1,4 +1,5 @@
 linshortpath=$1
+export PS1GITFOLD=$(pwd)
 git_fold() {
     gitfold=
     if [ -d ".git" ]; then
@@ -9,12 +10,30 @@ git_fold() {
     echo $gitfold
 }
 PS1='${debian_chroot:+($debian_chroot)}\[\033[03;34m\]<\W\[\033[04;01;35m\]$(git_fold)\[\033[00;34m\]>\[\033[00;37m\] '
-
+if ! command -v lsd  &> /dev/null
+then
+    echo "installing lsd"
+    sudo apt install lsd
+fi
 alias ls='lsd'
 alias ll='lsd -l'
 alias lst='lsd --tree'
+if ! command -v fdfind  &> /dev/null
+then
+    echo "installing fd-find"
+    sudo apt install fd-find
+fi
 alias fdf='fdfind'
+if ! command -v bat  &> /dev/null
+then
+    echo "installing bat"
+    sudo apt install bat
+fi
 alias bat='batcat'
+if ! command -v autojump  &> /dev/null
+then
+    echo "installing autojump"
+    sudo apt install autojump
+fi
 . /usr/share/autojump/autojump.sh
 source $1/gitshort.sh
-source $1/sshshort.sh

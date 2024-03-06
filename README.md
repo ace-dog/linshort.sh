@@ -20,13 +20,19 @@ A linux terminal git and ssh helper utility
 > |   `gitcc`  | git commit -m "$Type[$Scope:$Ticket] $message
 > |   `gituc`  | git commit -m "$Type[$Scope:$Ticket] $message; terminal UI
 
-## SSH Commands
+## Packages installed
+- lsd
+- fdfind
+- bat
+- autojump
+
+## Alias commands added
 > | short     |    comamnd    |
 > |:---------:|:-------------:|
-> |   `sshadd`  | add connection to ssh list
-> |   `sshrm`   | remove connection from  ssh list
-> |   `sshcnt`  | get number of connections
-> |   `sshlst`  | list connections
-> |   `sshcon`  | connecto to connection from list, input is source number
-> |   `linssh`  | Terminal UI connection managment
+> |   `lsd` | ls
+> |   `lsd -l`  | ll
+> |   `lst`   | lsd --tree
+> |   `fdf`   | fdfind
+> |   `batcat`   | bat
+
 
