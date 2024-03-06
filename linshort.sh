@@ -31,7 +31,7 @@ then
     sudo apt install fd-find
 fi
 alias fdf='fdfind'
-if ! command -v bat  &> /dev/null
+if ! command -v batcat  &> /dev/null
 then
     echo "installing bat"
     sudo apt install bat
