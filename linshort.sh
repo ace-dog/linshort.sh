@@ -20,7 +20,7 @@ PROMPT_COMMAND=custom_prompt
 if ! command -v lsd  &> /dev/null
 then
     echo "installing lsd"
-    sudo apt install lsd
+    sudo snap install lsd
 fi
 alias ls='lsd'
 alias ll='lsd -l'
