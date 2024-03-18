@@ -19,12 +19,15 @@ custom_prompt() {
 PROMPT_COMMAND=custom_prompt
 if ! command -v lsd  &> /dev/null
 then
+    echo "installing cargo"
+    sudo apt  install cargo
     echo "installing lsd"
-    sudo snap install lsd
+    cargo install lsd
 fi
 alias ls='lsd'
 alias ll='lsd -l'
 alias lst='lsd --tree'
+export PATH="$HOME/.cargo/bin:$PATH"
 if ! command -v fdfind  &> /dev/null
 then
     echo "installing fd-find"
