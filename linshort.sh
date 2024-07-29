@@ -19,10 +19,8 @@ custom_prompt() {
 PROMPT_COMMAND=custom_prompt
 if ! command -v lsd  &> /dev/null
 then
-    echo "installing cargo"
-    sudo apt  install cargo
     echo "installing lsd"
-    cargo install lsd
+    sudo snap  install lsd
 fi
 alias ls='lsd'
 alias ll='lsd -l'
