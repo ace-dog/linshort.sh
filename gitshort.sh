@@ -68,18 +68,26 @@ function gitcc() { # git conventional commit
     read Ticket
     echo "Type message: press enter to leave empty"
     read message
-    CommitMessage=
-    if [[ $Scope == "" || $Ticket == "" ]]; then
-        CommitMessage="$commit_type[$Scope$Ticket] $message"
-    else
-        CommitMessage="$commit_type[$Scope:$Ticket] $message"
-    fi    
-    echo "Commit message: $CommitMessage"
+    if [[ $Scope == "" || $message == "" ]]; then
+        echo "commit info not complete"
+    fi  
+    Commitheader=
+    if [[ $Ticket == "" ]]; then
+        Commitheader="$commit_type[$Scope]"
+    else    
+        Commitheader="$commit_type[$Scope]:[VIVI-$Ticket](https://vivi.atlassian.net/browse/VIVI-$Ticket)"
+    fi  
+    echo "--------------------------"
+    echo "Commit message:"
+    echo "--------------------------"
+    echo "$Commitheader"
+    echo "$message"
+    echo "--------------------------"
     echo "to commit y/N"
     read yes_commit
     yes_commit=$(echo "$yes_commit" | tr '[:upper:]' '[:lower:]')
     if [[ $yes_commit == "y" || $yes_commit == "yes" ]]; then
-        git commit -v -m "$CommitMessage"
+        git commit -v -m "$Commitheader" -m "$message"
         echo "Commit Done"
     else
         echo "Not Commit"

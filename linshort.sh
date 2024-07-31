@@ -9,10 +9,10 @@ git_fold() {
     fi
     echo $gitfold
 }
-PS1='${debian_chroot:+($debian_chroot)}\[\033[03;34m\]<\W\[\033[04;01;35m\]$(git_fold)\[\033[00;34m\]>\[\033[00;37m\] '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[03;34m\]<\W\[\033[04;01;35m\]$(git_fold)\[\033[00;34m\]>\[\033[00;93m\] '
 custom_prompt() {
     if [ "$PS1GITFOLD" != "$PWD" ]; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[03;34m\]<\W\[\033[04;01;35m\]$(git_fold)\[\033[00;34m\]>\[\033[00;37m\] ' 
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[03;34m\]<\W\[\033[04;01;35m\]$(git_fold)\[\033[00;34m\]>\[\033[00;93m\] ' 
     fi    
     PS1GITFOLD=$(pwd)
 }
@@ -45,3 +45,4 @@ then
 fi
 . /usr/share/autojump/autojump.sh
 source $1/gitshort.sh
+source $1/dockershort.sh
