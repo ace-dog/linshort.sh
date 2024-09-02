@@ -1,6 +1,6 @@
 
-alias dcla='docker ps -a'
-alias dcl='docker ps'
-alias drmc='docker rm -f'
-alias dil='docker images'
-alias drmi='docker rmi'
+alias dcla='sudo docker ps -a'
+alias dcl='sudo docker ps'
+alias drmc='sudo docker rm -f'
+alias dil='sudo docker images'
+alias drmi='sudo docker rmi'
